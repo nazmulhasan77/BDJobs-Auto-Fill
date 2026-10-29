@@ -156,7 +156,7 @@ reload the extension. No code changes needed.
 ## 👨‍💻 Author & Credits
 
 Developed by **[MD. Nazmul Hasan](https://www.facebook.com/nayeem7762/)**  
-- 🎓 **Department:** Computer Science & Engineering, Rajshahi University  
+- 🎓 **Department:** Computer Science & Engineering, University of Rajshahi  
 - 💼 **Role:** CEO, **[Butterfly Devs](https://www.facebook.com/butterflydevs/)**  
 - 🌐 **Facebook Profile:** [facebook.com/nayeem7762](https://www.facebook.com/nayeem7762/)  
 - 🦋 **Company Page:** [facebook.com/butterflydevs](https://www.facebook.com/butterflydevs/)
