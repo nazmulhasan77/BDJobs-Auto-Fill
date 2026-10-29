@@ -8,8 +8,32 @@ body {
   background: #f6f3f1;
 }
 header { background: #d8361f; color: #fff; padding: 10px 12px; }
+.header-top { display: flex; justify-content: space-between; align-items: center; }
 header .title { font-size: 15px; font-weight: 700; }
 header .sub { font-size: 11px; opacity: .9; }
+
+/* toggle switch */
+.toggle-container { display: flex; align-items: center; gap: 6px; }
+.toggle-label { font-size: 11px; font-weight: bold; min-width: 24px; text-transform: uppercase; }
+.switch { position: relative; display: inline-block; width: 38px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.35); transition: .25s; border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.slider:before {
+  position: absolute; content: ""; height: 14px; width: 14px; left: 2px; bottom: 2px;
+  background-color: white; transition: .25s; border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.switch input:checked + .slider { background-color: #2ecc71; border-color: #27ae60; }
+.switch input:checked + .slider:before { transform: translateX(18px); }
+
+.disabled-banner {
+  background: #ffebe8; color: #b3261e; border-bottom: 1px solid #f5c2bc;
+  padding: 6px 12px; font-size: 11px; font-weight: 600; text-align: center;
+}
 
 section.profiles, main, footer { padding: 10px 12px; }
 label { display: block; font-weight: 600; margin: 6px 0 3px; font-size: 12px; }
@@ -29,6 +53,8 @@ button {
   border-radius: 5px; padding: 7px 9px; font-size: 12px; font-weight: 600;
 }
 button:hover { background: #efe7e3; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button:disabled:hover { background: inherit; }
 button.primary { background: #d8361f; color: #fff; border-color: #b62a16; }
 button.primary:hover { background: #b62a16; }
 button.mini { padding: 6px 9px; }

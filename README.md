@@ -13,6 +13,7 @@ profile, and refill with one click**. It supports **multiple profiles** and
 
 ## ✨ Features
 
+- **Enable / Disable Toggle** — turn the extension and floating page button ON/OFF at any time directly from the popup header.
 - **Works on any site** — no per-site coding. `host_permissions` is `<all_urls>`.
 - **Capture & Save** — fill the form by hand once, click *Capture & Save*, and the
   extension stores every field (name, locator, value, type) into the active profile.

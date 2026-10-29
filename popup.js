@@ -7,20 +7,23 @@
 
 const STORE_PROFILES = 'bdjobs_profiles';
 const STORE_ACTIVE = 'bdjobs_active';
+const STORE_ENABLED = 'bdjobs_enabled';
 const TYPES = ['text', 'select', 'checkbox', 'radio'];
 
 /* ---- state -------------------------------------------------------------- */
 
 let profiles = {};   // { name: { fields: [ {key,locator,value,type}, ... ] } }
 let active = null;   // active profile name
+let isEnabled = true; // extension enabled/disabled state
 
 /* ---- storage helpers ---------------------------------------------------- */
 
 function load() {
   return new Promise((res) => {
-    chrome.storage.local.get([STORE_PROFILES, STORE_ACTIVE], (r) => {
+    chrome.storage.local.get([STORE_PROFILES, STORE_ACTIVE, STORE_ENABLED], (r) => {
       profiles = r[STORE_PROFILES] || {};
       active = r[STORE_ACTIVE] || null;
+      isEnabled = r[STORE_ENABLED] !== false; // default true
       if (!active || !profiles[active]) active = Object.keys(profiles)[0] || null;
       res();
     });
@@ -28,7 +31,7 @@ function load() {
 }
 function save() {
   return new Promise((res) => {
-    chrome.storage.local.set({ [STORE_PROFILES]: profiles, [STORE_ACTIVE]: active }, res);
+    chrome.storage.local.set({ [STORE_PROFILES]: profiles, [STORE_ACTIVE]: active, [STORE_ENABLED]: isEnabled }, res);
   });
 }
 function activeProfile() {
@@ -124,9 +127,24 @@ function sendToActiveTab(message) {
   });
 }
 
+function updateToggleUI() {
+  const toggle = $('extensionToggle');
+  const label = $('toggleText');
+  const banner = $('disabledBanner');
+  if (toggle) toggle.checked = isEnabled;
+  if (label) label.textContent = isEnabled ? 'ON' : 'OFF';
+  if (banner) banner.style.display = isEnabled ? 'none' : 'block';
+  if ($('capSaveBtn')) $('capSaveBtn').disabled = !isEnabled;
+  if ($('fillBtn')) $('fillBtn').disabled = !isEnabled;
+}
+
 /* ---- actions ------------------------------------------------------------ */
 
 async function doFill() {
+  if (!isEnabled) {
+    setStatus('Extension is disabled. Turn it ON from the top switch.', 'err');
+    return;
+  }
   const p = activeProfile();
   if (!p.fields.length) { setStatus('No fields in this profile. Capture or add some first.', 'err'); return; }
   setStatus('Filling…');
@@ -142,6 +160,10 @@ async function doFill() {
 
 // Capture the currently-filled page and save it straight into the active profile.
 async function doCaptureAndSave() {
+  if (!isEnabled) {
+    setStatus('Extension is disabled. Turn it ON from the top switch.', 'err');
+    return;
+  }
   setStatus('Reading page & saving…');
   try {
     const resp = await sendToActiveTab({ action: 'capture' });
@@ -262,6 +284,14 @@ function init() {
     renderProfileList();
     buildFields();
     refreshRaw();
+    updateToggleUI();
+
+    $('extensionToggle').addEventListener('change', async (e) => {
+      isEnabled = e.target.checked;
+      await chrome.storage.local.set({ [STORE_ENABLED]: isEnabled });
+      updateToggleUI();
+      setStatus(isEnabled ? 'Extension enabled.' : 'Extension disabled.', isEnabled ? 'ok' : 'err');
+    });
 
     $('profileSelect').addEventListener('change', async (e) => {
       active = e.target.value || null;

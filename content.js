@@ -201,14 +201,19 @@
   /* ---- messaging -------------------------------------------------------- */
 
   chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-    if (msg.action === 'fill') {
-      (async () => { sendResponse(await fillProfile(msg.profile)); })();
-      return true;
-    }
-    if (msg.action === 'capture') {
-      sendResponse({ ok: true, fields: captureForm() });
-      return;
-    }
+    chrome.storage.local.get(['bdjobs_enabled'], async (r) => {
+      const isEnabled = r.bdjobs_enabled !== false;
+      if (!isEnabled && (msg.action === 'fill' || msg.action === 'capture')) {
+        sendResponse({ ok: false, msg: 'BDJobs Auto-Fill is disabled. Please enable it first.' });
+        return;
+      }
+      if (msg.action === 'fill') {
+        sendResponse(await fillProfile(msg.profile));
+      } else if (msg.action === 'capture') {
+        sendResponse({ ok: true, fields: captureForm() });
+      }
+    });
+    return true; // async response
   });
 
   /* ---- floating button -------------------------------------------------- */
@@ -219,6 +224,11 @@
     t.style.display = 'block';
     clearTimeout(btn._t);
     btn._t = setTimeout(() => { t.style.display = 'none'; }, 8000);
+  }
+
+  function removeButton() {
+    const btn = document.getElementById('bdjobsAFBtn');
+    if (btn) btn.remove();
   }
 
   function injectButton() {
@@ -236,7 +246,11 @@
     document.head.appendChild(st);
     document.body.appendChild(btn);
     btn.querySelector('button').addEventListener('click', async () => {
-      const res = await chrome.storage.local.get(['bdjobs_profiles', 'bdjobs_active']);
+      const res = await chrome.storage.local.get(['bdjobs_profiles', 'bdjobs_active', 'bdjobs_enabled']);
+      if (res.bdjobs_enabled === false) {
+        toast(btn, 'BDJobs Auto-Fill is disabled.');
+        return;
+      }
       const profiles = res.bdjobs_profiles || {};
       const profile = res.bdjobs_active ? profiles[res.bdjobs_active] : null;
       if (!profile) { toast(btn, 'No active profile saved. Open the extension popup and add one.'); return; }
@@ -248,6 +262,25 @@
     });
   }
 
-  if (document.readyState !== 'loading') injectButton();
-  else document.addEventListener('DOMContentLoaded', injectButton);
+  function initContent() {
+    chrome.storage.local.get(['bdjobs_enabled'], (r) => {
+      if (r.bdjobs_enabled !== false) {
+        injectButton();
+      }
+    });
+  }
+
+  // Listen to changes in enable/disable state
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'local' && changes.bdjobs_enabled !== undefined) {
+      if (changes.bdjobs_enabled.newValue === false) {
+        removeButton();
+      } else {
+        injectButton();
+      }
+    }
+  });
+
+  if (document.readyState !== 'loading') initContent();
+  else document.addEventListener('DOMContentLoaded', initContent);
 })();
