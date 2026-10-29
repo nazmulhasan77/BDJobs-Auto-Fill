@@ -150,3 +150,13 @@ reload the extension. No code changes needed.
 | `images/icon-*.png` | Toolbar / store icons |
 | `sample_profile.json` | Example profile (43 BOGMC fields) for import |
 | `README.md` | This document |
+
+---
+
+## 👨‍💻 Author & Credits
+
+Developed by **[MD. Nazmul Hasan](https://www.facebook.com/nayeem7762/)**  
+- 🎓 **Department:** Computer Science & Engineering, Rajshahi University  
+- 💼 **Role:** CEO, **[Butterfly Devs](https://www.facebook.com/butterflydevs/)**  
+- 🌐 **Facebook Profile:** [facebook.com/nayeem7762](https://www.facebook.com/nayeem7762/)  
+- 🦋 **Company Page:** [facebook.com/butterflydevs](https://www.facebook.com/butterflydevs/)

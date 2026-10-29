@@ -93,3 +93,23 @@ small { color: #6a5650; font-size: 11px; display: block; margin-top: 5px; }
 
 footer { border-top: 1px solid #ddd0cb; background: #efe7e3; color: #6a5650; }
 footer small { margin: 0; }
+
+/* developer credits */
+.dev-credits {
+  background: #fff; border: 1px solid #d8c9c4; border-radius: 6px;
+  padding: 8px 10px; margin-bottom: 8px; text-align: center;
+}
+.dev-info { font-size: 12px; font-weight: 700; color: #231a17; }
+.dev-link { color: #d8361f; text-decoration: none; font-weight: 700; }
+.dev-link:hover { text-decoration: underline; }
+.dev-sub { font-size: 11px; color: #6a5650; margin: 3px 0 6px; }
+.company-link { color: #1877f2; text-decoration: none; font-weight: 600; }
+.company-link:hover { text-decoration: underline; }
+.dev-socials { display: flex; justify-content: center; gap: 8px; margin-top: 4px; }
+.social-badge {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600;
+  padding: 3px 9px; border-radius: 4px; background: #efe7e3; color: #231a17;
+  text-decoration: none; border: 1px solid #d8c9c4; transition: all .15s ease;
+}
+.social-badge:hover { background: #d8361f; color: #fff; border-color: #b62a16; }
+.note-text { text-align: center; }

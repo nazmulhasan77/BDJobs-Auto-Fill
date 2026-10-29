@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "BDJobs Auto-Fill",
   "version": "1.0.0",
+  "author": "MD. Nazmul Hasan (Butterfly Devs)",
   "description": "Generic auto-fill for ANY job application form. Capture fields from any page, edit them manually, save multiple profiles, import/export JSON, and fill everything with one click.",
   "icons": {
     "16": "images/icon-16.png",
