@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "BDJobs Autofill",
+  "version": "1.0.0",
+  "description": "Generic auto-fill for ANY job application form. Capture fields from any page, edit them manually, save multiple profiles, import/export JSON, and fill everything with one click.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "BDJobs Auto-Fill",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "_type": "bdjobs-profiles",
+  "active": "BOGMC Example",
+  "profiles": {
+    "BOGMC Example": {
+      "fields": [
+        { "key": "name", "locator": "#name", "value": "MD. KARIM UDDIN", "type": "text" },
+        { "key": "name_bn", "locator": "#name_bn", "value": "মোঃ করিম উদ্দিন", "type": "text" },
+        { "key": "father", "locator": "#father", "value": "MD. RAHIM UDDIN", "type": "text" },
+        { "key": "mother", "locator": "#mother", "value": "FATEMA BEGUM", "type": "text" },
+        { "key": "dob", "locator": "#dob", "value": "1998-05-12", "type": "text" },
+        { "key": "nationality", "locator": "#nationality", "value": "Bangladeshi", "type": "select" },
+        { "key": "religion", "locator": "#religion", "value": "Islam", "type": "select" },
+        { "key": "gender", "locator": "#gender", "value": "Male", "type": "select" },
+        { "key": "nid", "locator": "#nid", "value": "Yes", "type": "select" },
+        { "key": "nid_no", "locator": "#nid_no", "value": "1234567890", "type": "text" },
+        { "key": "marital_status", "locator": "#marital_status", "value": "Single", "type": "select" },
+        { "key": "mobile", "locator": "#mobile", "value": "01712345678", "type": "text" },
+        { "key": "confirm_mobile", "locator": "#confirm_mobile", "value": "01712345678", "type": "text" },
+        { "key": "email", "locator": "#email", "value": "karim@example.com", "type": "text" },
+        { "key": "quota", "locator": "#quota", "value": "Not Applicable", "type": "select" },
+        { "key": "dep_status", "locator": "#dep_status", "value": "Not Applicable", "type": "select" },
+        { "key": "present_careof", "locator": "#present_careof", "value": "MD. RAHIM UDDIN", "type": "text" },
+        { "key": "present_village", "locator": "#present_village", "value": "Banasree, Dhaka", "type": "text" },
+        { "key": "present_district", "locator": "#present_district", "value": "Dhaka", "type": "select" },
+        { "key": "present_upazila", "locator": "#present_upazila", "value": "Rampura", "type": "select" },
+        { "key": "present_post", "locator": "#present_post", "value": "Banasree", "type": "text" },
+        { "key": "present_postcode", "locator": "#present_postcode", "value": "1219", "type": "text" },
+        { "key": "ssc_exam", "locator": "#ssc_exam", "value": "S.S.C", "type": "select" },
+        { "key": "ssc_group", "locator": "#ssc_group", "value": "Science", "type": "select" },
+        { "key": "ssc_roll", "locator": "#ssc_roll", "value": "123456", "type": "text" },
+        { "key": "ssc_board", "locator": "#ssc_board", "value": "Dhaka", "type": "select" },
+        { "key": "ssc_result_type", "locator": "#ssc_result_type", "value": "GPA(out of 5)", "type": "select" },
+        { "key": "ssc_result", "locator": "#ssc_result", "value": "5.00", "type": "text" },
+        { "key": "ssc_year", "locator": "#ssc_year", "value": "2014", "type": "select" },
+        { "key": "hsc_exam", "locator": "#hsc_exam", "value": "H.S.C", "type": "select" },
+        { "key": "hsc_group", "locator": "#hsc_group", "value": "Science", "type": "select" },
+        { "key": "hsc_roll", "locator": "#hsc_roll", "value": "654321", "type": "text" },
+        { "key": "hsc_board", "locator": "#hsc_board", "value": "Dhaka", "type": "select" },
+        { "key": "hsc_result_type", "locator": "#hsc_result_type", "value": "GPA(out of 5)", "type": "select" },
+        { "key": "hsc_result", "locator": "#hsc_result", "value": "5.00", "type": "text" },
+        { "key": "hsc_year", "locator": "#hsc_year", "value": "2016", "type": "select" },
+        { "key": "gra_exam", "locator": "#gra_exam", "value": "B.Sc Engineering", "type": "select" },
+        { "key": "gra_institute", "locator": "#gra_institute", "value": "Bangladesh University of Engineering & Technology", "type": "select" },
+        { "key": "gra_subject", "locator": "#gra_subject", "value": "Computer Science & Engineering", "type": "select" },
+        { "key": "gra_result_type", "locator": "#gra_result_type", "value": "CGPA(out of 4)", "type": "select" },
+        { "key": "gra_result", "locator": "#gra_result", "value": "3.75", "type": "text" },
+        { "key": "gra_year", "locator": "#gra_year", "value": "2021", "type": "select" },
+        { "key": "gra_duration", "locator": "#gra_duration", "value": "04 Years", "type": "select" }
+      ]
+    }
+  }
+}

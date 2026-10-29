@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BDJobs Auto-Fill</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="title">⚡ BDJobs Auto-Fill</div>
+    <div class="sub">Generic auto-fill for any job application form</div>
+  </header>
+
+  <section class="profiles">
+    <label for="profileSelect">Active profile</label>
+    <div class="row">
+      <select id="profileSelect"></select>
+      <button id="addBtn" class="mini" title="New profile">＋</button>
+      <button id="delBtn" class="mini danger" title="Delete profile">🗑</button>
+    </div>
+    <div class="row">
+      <button id="capSaveBtn" class="primary">Capture &amp; Save</button>
+      <button id="fillBtn">Fill form ↧</button>
+    </div>
+    <div id="status" class="status"></div>
+  </section>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="fields">Fields</button>
+    <button class="tab" data-tab="data">Raw JSON</button>
+    <button class="tab" data-tab="io">Import / Export</button>
+  </div>
+
+  <main>
+    <section id="tab-fields" class="tabpane active">
+      <div id="fieldsBox"></div>
+      <div class="row">
+        <button id="addFieldBtn" class="wide">＋ Add field</button>
+        <button id="saveEditsBtn" class="primary wide">💾 Save edits</button>
+      </div>
+      <small>Fill the form on the site first, then click <b>Capture &amp; Save</b> — it grabs the page data into this profile. Or edit values here and click <b>Save edits</b>. Each card = one field. The locator (#id) is auto-filled and hidden — tap <b>Locator</b> only if a field fails to fill.</small>
+    </section>
+
+    <section id="tab-data" class="tabpane">
+      <textarea id="rawJson" rows="22" spellcheck="false"></textarea>
+      <button id="applyJson" class="primary wide">Apply JSON to profile</button>
+    </section>
+
+    <section id="tab-io" class="tabpane">
+      <p>Back up all profiles, or import a previously exported file. Imported profiles are <b>merged</b> (same name overwrites).</p>
+      <button id="exportAllBtn" class="wide">⬇ Export all profiles (.json)</button>
+      <button id="exportActiveBtn" class="wide">⬇ Export active profile (.json)</button>
+      <hr>
+      <label for="importFile">Import JSON file</label>
+      <input type="file" id="importFile" accept=".json,application/json">
+      <small>Accepts a full backup or a single profile object.</small>
+    </section>
+  </main>
+
+  <footer>
+    <small>Works on any job site. Captcha &amp; file uploads stay manual — review before submitting.</small>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
