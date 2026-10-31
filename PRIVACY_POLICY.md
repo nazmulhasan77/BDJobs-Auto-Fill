@@ -14,7 +14,7 @@ The sole purpose of BDJobs Auto-Fill is to help users automatically fill repetit
 
 ## 3. Permissions Used
 - **`storage`**: Used solely to save and retrieve your custom form profiles and preferences locally on your browser.
-- **`activeTab` & `scripting`**: Used strictly to detect form input fields and autofill values on the currently active job application tab when you click "Capture" or "Fill form".
+- **`activeTab`**: Used strictly to communicate with the currently active job application tab when you click "Capture" or "Fill form".
 - **Host Permissions (`<all_urls>`)**: Required so that the extension can identify standard HTML forms and provide the autofill feature on any job application portal or career website chosen by the user.
 
 ## 4. Third-Party Services
